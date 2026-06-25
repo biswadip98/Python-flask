@@ -9,7 +9,7 @@ def hello_world():
 return nne.
  if 
    go
-if go og
+if gg
 
 
 @app.route('/health')
