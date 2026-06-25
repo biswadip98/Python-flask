@@ -15,19 +15,5 @@ jobs:
         run: pip install ruff
        
       - name: check the files for lining
-        run: ruff check Python-flask/app.py
-
-  Build:
-    runs-on: ubuntu-latest
-    needs: Code-Test
-    steps:
-      - name: Build the app
-        run: echo "Build successfully"
-
-  Deploy:
-    runs-on: ubuntu-latest
-    needs: Build
-    steps:
-      - name: deploy the code
-        run: echo "Deployed successfully"
+        run: ruff check .
        
