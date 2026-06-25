@@ -18,7 +18,7 @@ jobs:
        run: pip install ruff
        
      - name: check the files for lining  # This will run the linter
-       run: ruff .
+       run: ruff check .
 
   Build:
     runs-on: ubuntu-latest
