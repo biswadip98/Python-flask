@@ -1,6 +1,7 @@
 name: linting
 on:
   push:
+    branches: main
     paths: "*.py"
 
 jobs:
