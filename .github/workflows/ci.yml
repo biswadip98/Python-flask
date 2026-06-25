@@ -1,0 +1,11 @@
+name: linting
+on:
+  push:
+    paths: (*.py)
+
+jobs:
+  Code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: clone the code
+        uses: actions/checkout@v4
