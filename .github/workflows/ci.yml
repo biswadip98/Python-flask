@@ -1,32 +1,91 @@
-name: linting
+name: Python-Flask-CI
 on:
   push:
-    branches: main
-    paths: "*.py"
-
+    branches: [ main ]
+    
 jobs:
-  Code-Test:
+  CI:
     runs-on: ubuntu-latest
     steps:
-      - name: clone the code   # Clone the code from the repo into this runner
+      - name: take the code
         uses: actions/checkout@v7
 
-      - name: install linter
+      - name: install the linetr to check the syntax
         run: pip install ruff
-       
-      - name: check the files for lining
+
+      - name: use linter to check the python code
         run: ruff check .
+      
+      - name: Log in to Docker Hub to push the image
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-  Build:
-    runs-on: ubuntu-latest
-    needs: Code-Test
-    steps:
-      - name: Build the app
-        run: echo "Build successfully"
+      - name: Build and push Docker image into the docker hub
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-app:latest
 
-  Deploy:
-    runs-on: ubuntu-latest
-    needs: Build
-    steps:
-      - name: deploy the code
-        run: echo "Deployed successfully"
+  
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# This is a basic workflow to help you get started with Actions
+
+
+# name: linting
+# on:
+#   push:
+#     branches: main
+#     paths: "*.py"
+
+# jobs:
+#   Code-Test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: clone the code   # Clone the code from the repo into this runner
+#         uses: actions/checkout@v7
+
+#       - name: install linter
+#         run: pip install ruff
+       
+#       - name: check the files for lining
+#         run: ruff check .
+
+#   Build:
+#     runs-on: ubuntu-latest
+#     needs: Code-Test
+#     steps:
+#       - name: Build the app
+#         run: echo "Build successfully"
+
+#   Deploy:
+#     runs-on: ubuntu-latest
+#     needs: Build
+#     steps:
+#       - name: deploy the code
+#         run: echo "Deployed successfully"
