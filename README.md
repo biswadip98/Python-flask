@@ -7,16 +7,17 @@ Tech Stack-
 Component	Technology:
 Framework	Flask 3.1.1
 Runtime	Python 3.14
-Container	Docker (python-slim / distroless)
-Deploy in Github Actions (Self Hosted Runner)
+Container	Docker (python-slim)
+
+Deploy in Github Actions (Self Hosted Runner):
 Project Structure
 flask-app-ecs/
-├── app.py                 # Flask app with routes
-├── run.py                 # Entry point (host 0.0.0.0, port 80)
-├── requirements.txt       # Python dependencies
-├── templates/
-│   └── index.html         # Landing page
-├── Dockerfile             # Simple single-stage build
+app.py                 # Flask app with routes
+run.py                 # Entry point (host 0.0.0.0, port 80)
+requirements.txt       # Python dependencies
+templates/
+   index.html         # Landing page
+Dockerfile             # Simple single-stage build
 
 Quick Start
 Run locally
