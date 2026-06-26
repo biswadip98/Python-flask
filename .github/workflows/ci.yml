@@ -35,6 +35,9 @@ jobs:
     steps:
       - name: deploy the code
         run: echo deployed the app successfully
+
+      - name: Self-hosted runners
+        run: echo "It will runs on Self-hosted runners"
       # - name: Deploy the Docker image to the server
       #   uses: appleboy/ssh-action@v0.1.6
       #   with:
